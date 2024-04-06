@@ -1,3 +1,9 @@
+using CCD_Attendance.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
+
+
 namespace CCD_Attendance
 {
     public class Program
@@ -8,6 +14,19 @@ namespace CCD_Attendance
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+
+            //1) fetch the information about the connection string
+            var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            //2) Add the context class to the set of services and define the option to use SQL Server on that connection string that has been fetched in the previous line
+            builder.Services.AddDbContext<ccdDBContext>(options => options.UseSqlServer(connString));
+
+            builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ccdDBContext>();
+
+            builder.Services.AddRazorPages();
+
+
 
             var app = builder.Build();
 
@@ -24,11 +43,15 @@ namespace CCD_Attendance
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
+
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{Area=User}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
