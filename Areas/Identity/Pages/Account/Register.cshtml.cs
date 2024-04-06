@@ -100,6 +100,15 @@ namespace CCD_Attendance.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            // these are the added fields for First and last name
+            [Required]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
         }
 
 
@@ -124,11 +133,21 @@ namespace CCD_Attendance.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
+                var user = CreateUser() as ApplicationUser;
+
+                if (user == null)
+                {
+                    throw new InvalidOperationException("User creation failed. The user instance is not of ApplicationUser type.");
+                }
+
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
+                user.AccessType = "Requested";  // Setting AccessType to "Requested"
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
 
                 if (result.Succeeded)
                 {
