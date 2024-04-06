@@ -56,7 +56,7 @@ namespace CCD_Attendance
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{Area=Requested}/{controller=Home}/{action=Index}/{id?}");
+                pattern: "{Area=Requested}/{controller=Home}/{action=UnauthorizedIndex}/{id?}");
 
             app.Run();
         }

@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 
-namespace CCD_Attendance.Areas.Requested.Controllers
+namespace CCD_Attendance.Areas.Employee.Controllers
 {
 
-    [Area("Requested")]
+    [Area("Employee")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
