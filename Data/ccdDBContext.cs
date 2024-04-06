@@ -14,6 +14,8 @@ namespace CCD_Attendance.Data
 
         }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

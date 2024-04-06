@@ -1,6 +1,7 @@
 using CCD_Attendance.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 
 
@@ -22,9 +23,13 @@ namespace CCD_Attendance
             //2) Add the context class to the set of services and define the option to use SQL Server on that connection string that has been fetched in the previous line
             builder.Services.AddDbContext<ccdDBContext>(options => options.UseSqlServer(connString));
 
-            builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ccdDBContext>();
+            builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<ccdDBContext>().AddDefaultTokenProviders();
+
+
 
             builder.Services.AddRazorPages();
+
+            builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 
 
@@ -51,7 +56,7 @@ namespace CCD_Attendance
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{Area=User}/{controller=Home}/{action=Index}/{id?}");
+                pattern: "{Area=Requested}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

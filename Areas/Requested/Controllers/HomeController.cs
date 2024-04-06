@@ -2,10 +2,10 @@ using CCD_Attendance.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CCD_Attendance.Areas.User.Controllers
+namespace CCD_Attendance.Areas.Requested.Controllers
 {
 
-    [Area("User")]
+    [Area("Requested")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
