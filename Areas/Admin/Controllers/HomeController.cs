@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace CCD_Attendance.Areas.Employee.Controllers
+namespace CCD_Attendance.Areas.Admin.Controllers
 {
-    [Area("Employee")]
-    [Authorize(Roles = "Employee")]
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         private readonly ccdDBContext _dbContext;
