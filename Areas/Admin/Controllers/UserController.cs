@@ -1,4 +1,4 @@
-﻿using CCD_Attendance.Areas.Employee.Models;
+﻿using CCD_Attendance.Areas.Admin.Models;
 using CCD_Attendance.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CCD_Attendance.Areas.Employee.Controllers
+namespace CCD_Attendance.Areas.Admin.Controllers
 {
-    [Area("Employee")]
-    [Authorize(Roles = "Employee")]
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;

@@ -1,4 +1,4 @@
-﻿@model CCD_Attendance.Areas.Employee.Models.UsersViewModel
+﻿@model CCD_Attendance.Areas.Admin.Models.UsersViewModel
 
 <h1>User Management</h1>
 
@@ -19,8 +19,8 @@
                     <td>@user.Email</td>
                     <td>@user.FirstName @user.LastName</td>
                     <td class="text-center">
-                        <a href="javascript:void(0)" onclick="if (confirm('Approve User?')) { window.location.href='@Url.Action("Approve", "User", new { area = "Employee", userId = user.Id })'; }" class="btn btn-sm btn-success">Approve</a>
-                        <a href="javascript:void(0)" onclick="if (confirm('Deny and delete User?')) { window.location.href='@Url.Action("Deny", "User", new { area = "Employee", userId = user.Id })'; }" class="btn btn-sm btn-danger">Deny</a>
+                        <a href="javascript:void(0)" onclick="if (confirm('Approve User?')) { window.location.href='@Url.Action("Approve", "User", new { area = "Admin", userId = user.Id })'; }" class="btn btn-sm btn-success">Approve</a>
+                        <a href="javascript:void(0)" onclick="if (confirm('Deny and delete User?')) { window.location.href='@Url.Action("Deny", "User", new { area = "Admin", userId = user.Id })'; }" class="btn btn-sm btn-danger">Deny</a>
                     </td>
                 </tr>
             }
@@ -45,7 +45,7 @@
                     <td>@user.Email</td>
                     <td>@user.FirstName @user.LastName</td>
                     <td class="text-center">
-                        <a href="javascript:void(0)" onclick="if (confirm('Remove and delete User?')) { window.location.href='@Url.Action("Delete", "User", new { area = "Employee", userId = user.Id })'; }" class="btn btn-sm btn-danger">Remove</a>
+                        <a href="javascript:void(0)" onclick="if (confirm('Remove and delete User?')) { window.location.href='@Url.Action("Delete", "User", new { area = "Admin", userId = user.Id })'; }" class="btn btn-sm btn-danger">Remove</a>
                     </td>
                 </tr>
             }
