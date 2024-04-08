@@ -6,7 +6,7 @@
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        // Include other details as needed
+        
     }
 
     public class UsersViewModel

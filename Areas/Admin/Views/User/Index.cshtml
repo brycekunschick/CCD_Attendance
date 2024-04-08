@@ -45,6 +45,7 @@
                     <td>@user.Email</td>
                     <td>@user.FirstName @user.LastName</td>
                     <td class="text-center">
+                        <a href="javascript:void(0)" onclick="if (confirm('Promote User to Employee?')) { window.location.href='@Url.Action("Promote", "User", new { area = "Admin", userId = user.Id })'; }" class="btn btn-sm btn-secondary">Promote</a>
                         <a href="javascript:void(0)" onclick="if (confirm('Remove and delete User?')) { window.location.href='@Url.Action("Delete", "User", new { area = "Admin", userId = user.Id })'; }" class="btn btn-sm btn-danger">Remove</a>
                     </td>
                 </tr>

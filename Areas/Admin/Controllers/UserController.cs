@@ -100,6 +100,17 @@ namespace CCD_Attendance.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Promote(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                await _userManager.AddToRoleAsync(user, "Employee");
+                await _userManager.RemoveFromRoleAsync(user, "User");
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
 
 
 
